@@ -1,0 +1,29 @@
+import java.util.*;
+
+public class TopLongestStrings {
+    public static void main(String[] args) {
+       
+        List<String> strings = Arrays.asList(
+            "apple", "Banana", "Cherry", "avocado", "Grapes", 
+            "Mango", "Pineapple", "Strawberry", "kiwi", "Apricot"
+        );
+
+        // Filter strings containing 'a' or 'A'
+        List<String> filtered = new ArrayList<>();
+        for (String s : strings) {
+            if (s.toLowerCase().contains("a")) {
+                filtered.add(s);
+            }
+        }
+
+        // Sort filtered strings by length in descending order
+        filtered.sort((s1, s2) -> Integer.compare(s2.length(), s1.length()));
+
+        List<String> top5 = filtered.size() > 5 ? filtered.subList(0, 5) : filtered;
+
+        System.out.println("Top 5 longest strings containing 'a' or 'A':");
+        for (String s : top5) {
+            System.out.println(s);
+        }
+    }
+}
